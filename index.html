@@ -222,7 +222,38 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1><span id="shu-ju-ke-shi-hua">数据可视化</span><a href="#shu-ju-ke-shi-hua" class="header-anchor">#</a></h1><h2><span id="yi-flask-ru-men"><strong>一 Flask入门</strong></span><a href="#yi-flask-ru-men" class="header-anchor">#</a></h2><p>[toc]</p>
+        <h1><span id="shu-ju-ke-shi-hua">数据可视化</span><a href="#shu-ju-ke-shi-hua" class="header-anchor">#</a></h1><h2><span id="yi-flask-ru-men"><strong>一 Flask入门</strong></span><a href="#yi-flask-ru-men" class="header-anchor">#</a></h2><div class="toc">
+
+<!-- toc -->
+
+<ul>
+<li><a href="#qian-yan">前言</a></li>
+<li><a href="#1-jiang-jie-flask-de-ru-men-dai-ma">1 讲解flask的入门代码</a></li>
+</ul>
+<ul>
+<li><a href="#er-shou-ye-zhi-zuo-lie-biao-ye-zhi-zuo">二 首页制作  &#x2F; 列表页制作</a><ul>
+<li><a href="#1-jiang-wai-bu-wang-ye-mo-kuai-ben-di-hua">1 将外部网页模块本地化</a></li>
+<li><a href="#2-zai-wai-bu-wang-ye-mo-kuai-ben-di-hua-hou-zeng-shan-yuan-su">2 在外部网页模块本地化后增删元素</a></li>
+</ul>
+</li>
+<li><a href="#san-echarts-ru-men"><strong>三 Echarts入门</strong></a><ul>
+<li><a href="#1-an-zhuang">1 安装</a></li>
+<li><a href="#2-ji-chu-shi-yong-liu-cheng">2 基础使用流程</a></li>
+<li><a href="#3-echarts-ying-yong">3 Echarts应用</a><ul>
+<li><a href="#echarts-zai-ci-xiang-mu-dou-ban-top250-zhong-de-ying-yong-dai-ma-mo-ban">Echarts在此项目(豆瓣Top250)中的应用代码模板</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#si-wordcloud-ru-men"><strong>四 WordCloud入门</strong></a><ul>
+<li><a href="#1-ji-chu-shi-yong-liu-cheng">1 基础使用流程</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+</div>
+
 <h3><span id="qian-yan">前言</span><a href="#qian-yan" class="header-anchor">#</a></h3><ol>
 <li><p><strong>什么是框架？</strong><br> 拿web应用开发为例。比如我们向服务器发出一个请求，服务器得到请求后做出响应。这个过程中我们只需要发出请求，或者发出重新封装好的请求；服务器收到请求后进行判断，然后响应；我们不需要知道底层的操作是怎么样，其实底层的操作就是别人写好的，将写好的代码封装起来，组成一个框架，人们在这框架里面调用方法。</p>
 <p> 比如买一台电脑，库是给你零部件自己组装；但是框架就是给你一台电脑。</p>
@@ -240,7 +271,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span>&gt;</span></span><br><span class="line">            &#123;% for key,value in result.items() %&#125;  <span class="comment">&lt;!--items在此处类似于enumerate，将字典转为列表</span></span><br><span class="line"><span class="comment">            [(key,value),(key,value),(key,value)]--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;key&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;value&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
-<h2><span id="er-shou-ye-zhi-zuo-x2f-lie-biao-ye-zhi-zuo">**二 首页制作  &#x2F; 列表页制作 **</span><a href="#er-shou-ye-zhi-zuo-x2f-lie-biao-ye-zhi-zuo" class="header-anchor">#</a></h2><p>在Python中使用Flask框架，一开始会出现额外的两个文件夹：static 和 templates</p>
+<h2><span id="er-shou-ye-zhi-zuo-x2f-lie-biao-ye-zhi-zuo">二 首页制作  &#x2F; 列表页制作</span><a href="#er-shou-ye-zhi-zuo-x2f-lie-biao-ye-zhi-zuo" class="header-anchor">#</a></h2><p>在Python中使用Flask框架，一开始会出现额外的两个文件夹：static 和 templates</p>
 <p>templates文件夹负责保存css,html等网页源码，比如从网站上下载的html模板，将它的html文件放到此文件夹中，flask里的jinja2模板会渲染这个文件夹里面的文件。</p>
 <p>static文件夹保存另外的css,html等文件，但这个文件里面连接的是当前文件里的素材，比如图片、链接等等。</p>
 <h3><span id="1-jiang-wai-bu-wang-ye-mo-kuai-ben-di-hua">1 将外部网页模块本地化</span><a href="#1-jiang-wai-bu-wang-ye-mo-kuai-ben-di-hua" class="header-anchor">#</a></h3><p>在站长之家的素材当中下载的html模板，里面通常会有一个文件夹和一个html（或者其他格式）的网页文件。将html文件放到templates中，因为后面flask会对其中进行渲染；将整个剩下的文件夹放到static中，这个文件夹里面存储的通常是素材，也有一个html文件。<br>二者之间的关系我认为是，外部的html文件负责的是搭建网站的基本框架，然后具体要呈现什么内容就是链接到内部的html文件，内部的html就是负责提供素材。<br>总体是：<strong>外部 连接 内部 连接 素材</strong><br><strong>本地化：</strong><br>    在所有内外html文件中，将链接的前部分寻址全部添加（替换）**<u>static&#x2F;后面与之前不变</u>**（按住ctrl+c+R，再点击replaceall。</p>
